@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Black background color */
+    color: #fff; /* White text color */
+  }
+  header {
+    background-color: #008000; /* green color */
+    color: #fff; /* White text color */
+    padding: 10px;
+    text-align: center;
+  }
+  nav {
+    background-color: #f8f9fa; /* Light gray color */
+    padding: 10px;
+  }
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  nav ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  nav ul li a {
+    color: #333; /* Dark gray color */
+    text-decoration: none;
+    padding: 5px 10px;
+  }
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  .section {
+    margin-bottom: 20px;
+  }
+  .form-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #333; /* Dark gray background color */
+    border-radius: 5px;
+  }
+  .form-container h2 {
+    margin-bottom: 20px;
+  }
+  .form-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .form-container input[type="text"],
+  .form-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  .form-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Blue color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .signup-link {
+    text-align: center;
+  }
+  .signup-link a {
+    color: #007bff; /* Blue color */
+    text-decoration: none;
+  }
