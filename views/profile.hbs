@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <h1>ISS Hub</h1>
+    <p>A centralized community platform and resources for international students at CSUS</p>
+  </header>
+  <nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <ul>
+
+      <li><a href="/">Home</a></li>
+      <li><a href="/academicSupport">Academic Support</a></li>
+      <li><a href="/forum">Community Forum</a></li>
+      <li><a href="/culturalEvent">Cultural Events</a></li>
+      <li><a href="/localService">Local Services</a></li>
+
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/auth/logout">Logout</a></li>
+    </ul>
+  </nav>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-4">
+        <div class="card">
+          <div class="avatar-ctn">
+            <img src="/avatar.png" class="avatar" alt="user profile picture"/>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><span>Name: {{user.name}}</span></h5>
+            <p class="card-text">Here are some quick info about yourself.</p>
+            <a href="#" class="btn btn-primary"><span>Email: {{user.email}}</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-8">
+        <div class="card text-left">
+          <div class="card-header">
+            Profile Page
+          </div>
+              <div class="card-body">
+                  <h5 class="card-title"><span>Welcome, {{user.name}}!</span></h5>
+                  <p class="card-text">Here is some information about your profile:</p>
+                  <p class="card-text">This will get populated with your post history</p>
+                  <p class="card-text"></p>
+                </div>
+              <div class="card-footer text-muted">
+                  ISS HUB
+                </div>
+                <div id="google_translate_element"></div>
+        </div>
+      </div>
+      {{#each forumData}}
+      <div class="col-12 mt-3">
+        <div class="card text-left mb-3">
+          <div class="card-header">
+            {{title}}
+          </div>
+          <div class="card-body"><span>
+            <h5 class="card-title"></h5>
+            <p class="card-text">{{content}}</p>
+            <p class="card-text"></p>
+          </span>
+          </div>
+              
+          <div class="card-footer text-muted">
+            {{date}}
+          </div>
+        </div>
+      </div>
+      {{/each}}
+
+    </div>
+  
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+</script>
+
+</body>
+</html>
