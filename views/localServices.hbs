@@ -1,82 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+  <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ISS Hub - Local Services</title>
+  <link rel="stylesheet" href="/style.css">
+  <title>Local Services</title>
   <style>
-    /* Basic CSS styles */
-    body {
-      font-family: Arial, sans-serif;
-	  background-color: #000; /* Black background color */
-	  color: #fff; /* White text color */
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #008000; /* green color */
-      color: #fff; /* White text color */
-      padding: 10px;
-      text-align: center;
-    }
-    nav {
-      background-color: #f8f9fa; /* Light gray color */
-      padding: 10px;
-    }
-    nav ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    nav ul li {
-      display: inline;
-      margin-right: 10px;
-    }
-    nav ul li a {
-      color: #333; /* Dark gray color */
-      text-decoration: none;
-      padding: 5px 10px;
-    }
-    .container {
+
+    .popup {
+      background-color: #ccc;
+      color: #000;
+      width: 80%;
+      height: 90%;
       max-width: 800px;
-      margin: auto;
-      padding: 20px;
+      max-height: 600px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      position: absolute; /* Changed to absolute positioning */
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Center the popup */
     }
-    .section {
-      margin-bottom: 20px;
+    
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      color: #008000; /* Green color */
+    }
+    
+    .close-btn:hover {
+      text-shadow: 0 0 5px #008000; /* Glow effect on hover */
+    }
+    
+    .popup {
+      background-color: #000; /* Black background */
+      width: 80%;
+      height: 80%;
+      max-width: 800px;
+      max-height: 600px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      position: absolute; /* Changed to absolute positioning */
+      top: 53%; /* Adjust the top position */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Center the popup */
+    }
+    
+    .area-card {
+      background-color: #fff;
+      color: #000;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .area-card:hover {
+      outline: 2px solid #4CAF50;
+      outline-offset: 5px;
+      transform: translateY(10px);
+    }
+    
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      color: ;
+      border-radius: 4px;
+    }
+    
+    .btn {
+      background-color: #008000; /* Green color */
+      color: #fff; /* White text color */
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #4CAF50;
+    }
+    
+    .options-list {
+      width: 50%;
+      height: 100%;
+      float: left;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto; /* Enable scrolling */
+    }
+    
+    .search-results {
+      width: 50%;
+      height: calc(100% - 40px);
+      float: left;
+      padding-top: 40px;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto; /* Enable scrolling */
+    }
+    
+    .option-card {
+      background-color: #008000; /* Light gray background */
+      color: white;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 300px;
+    }
+    
+    .option-card:hover {
+      background-color: #d3d3d3; /* Darker gray on hover */
+    }
+    
+    .search-result-card {
+      background-color: #f8f9fa; /* Light gray background */
+      height: 500%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      padding: 10px;
     }
   </style>
 </head>
+
 <body>
   <header>
-    <h1>ISS Hub</h1>
-    <p>A centralized digital ecosystem for international students at CSUS</p>
+      <h1>ISS Hub</h1>
+      <p>A centralized community platform and resources for international students at CSUS</p>
   </header>
+
   <nav>
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/academicSupport">Academic Support</a></li>
       <li><a href="/forum">Community Forum</a></li>
       <li><a href="/culturalEvent">Cultural Events</a></li>
-      <li><a href="/localService">Local Services</a></li>
-      <li><a href="/profile">User Profile</a></li>
+      <li><a href="/localServices" onclick="openLocationPopup()">Local Services</a></li>
+      {{#if user}}
+        {{#if isAdmin}}
+            <li><a href="/adminPortal">Admin Portal</a></li>
+        {{/if}}
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/auth/logout">Logout</a></li>
+      {{else}}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      {{/if}}
     </ul>
   </nav>
-  <div class="container">
-    <section class="section">
-      <h2>Academic Support</h2>
-      <p>Here you can find resources and support services to help you succeed academically at CSUS.</p>
-      <p>Resources may include tutoring services, academic advising, workshops, and more.</p>
-    </section>
-    <section class="section">
-      <h2>Upcoming Events</h2>
-      <ul>
-        <li><strong>March 5, 2024:</strong> Academic Advising Workshop - 10:00 AM</li>
-        <li><strong>March 10, 2024:</strong> Math Tutoring Session - 2:00 PM</li>
-        <li><strong>March 15, 2024:</strong> Writing Center Open House - All day</li>
-      </ul>
-    </section>
+
+  <div class="popup" id="locationPopup">
+    <span class="close-btn" onclick="closeLocationPopup()">&times;</span>
+    <div class="area-card card">
+      <h2>Please enter your location:</h2>
+      <label for="areaCode">Area Code:</label>
+      <input type="text" id="areaCode" class="input-field" required><br>
+      <label for="city">City:</label>
+      <input type="text" id="city" class="input-field" required><br>
+      <label for="state">State:</label>
+      <input type="text" id="state" class="input-field" required><br>
+      <button onclick="setUserLocation()" class="btn">Set Location</button>
+    </div>
   </div>
-</body>
+
+  <div class="options-list">
+    <h2>Options</h2>
+    <div class="option-card" onclick="searchOption('Airport Pickup and Drop-off')">Airport Pickup and Drop-off</div>
+    <div class="option-card" onclick="searchOption('Accommodation Assistance')">Accommodation Assistance</div>
+    <div class="option-card" onclick="searchOption('Language Support')">Language Support</div>
+    <div class="option-card" onclick="searchOption('Healthcare Assistance')">Healthcare Assistance</div>
+    <div class="option-card" onclick="searchOption('Legal and Immigration Support')">Legal and Immigration Support</div>
+    <div class="option-card" onclick="searchOption('Transportation')">Transportation</div>
+    <div class="option-card" onclick="searchOption('24/7 Support Line')">24/7 Support Line</div>
+  </div>
+  
+  <div class="search-results">
+    <h2>Search Results</h2>
+    <!-- Results will be displayed here -->
+  </div>
+
+  <script>
+    var userLocation = null; // Variable to store user's location
+
+    // Function to open location popup
+    function openLocationPopup() {
+      document.getElementById('locationPopup').style.display = 'block';
+    }
+
+    // Function to close location popup
+    function closeLocationPopup() {
+      document.getElementById('locationPopup').style.display = 'none';
+    }
+
+    // Function to set user's location and perform search
+    function setUserLocation() {
+      var areaCode = document.getElementById('areaCode').value;
+      var city = document.getElementById('city').value;
+      var state = document.getElementById('state').value;
+
+      // Validate user input (you may need more thorough validation)
+      if (areaCode && city && state) {
+        userLocation = areaCode + ', ' + city + ', ' + state;
+        closeLocationPopup();
+      } else {
+        alert('Please enter all fields.');
+      }
+    }
+
+    // Function to search for options based on user's location
+    function searchOption(option) {
+      if (!userLocation) {
+        alert('Please set your location first.');
+        return;
+      }
+
+      var searchResults = document.querySelector('.search-results');
+      searchResults.innerHTML = ''; // Clear existing content
+
+      // Construct the Google Maps URL with the user's location
+      var googleMapsUrl = 'https://www.google.com/maps/embed/v1/search?key=AIzaSyDSfrv_tx2bScrsG7fRkYloyqwf7BS1nDo&q=' + encodeURIComponent(option + ' near ' + userLocation);
+
+      // Create an iframe element to embed the Google Maps
+      var iframe = document.createElement('iframe');
+      iframe.setAttribute('src', googleMapsUrl);
+      iframe.setAttribute('width', '500px');
+      iframe.setAttribute('height', '400px');
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('allowfullscreen', '');
+
+      // Append the iframe to the search results section
+      searchResults.appendChild(iframe);
+    }
+  </script>
+
+  </body>
 </html>

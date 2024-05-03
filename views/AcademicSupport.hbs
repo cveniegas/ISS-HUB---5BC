@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ISS Hub - Academic Support</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
     /* Basic CSS styles */
     body {
       font-family: Arial, sans-serif;
-	  background-color: #000; /* Black background color */
-	  color: #fff; /* White text color */
+      background-color: #000; /* Black background color */
+      color: #fff; /* White text color */
       margin: 0;
       padding: 0;
     }
@@ -37,14 +38,53 @@
       color: #333; /* Dark gray color */
       text-decoration: none;
       padding: 5px 10px;
+      font-weight: bold;
     }
     .container {
       max-width: 800px;
       margin: auto;
       padding: 20px;
     }
+    
     .section {
-      margin-bottom: 20px;
+  margin-bottom: 20px;
+  color: #007bff; /* Blue color of hyperlinks */
+  text-align: center;
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Set the height of the sections */
+  background-size: cover;
+  background-position: center;
+  cursor: pointer; /* Add cursor pointer to indicate clickable */
+  border: 2px solid #fff; /* Add border */
+  border-radius: 10px; /* Add border radius */
+}
+    .section p {
+      color: rgb(70, 8, 8);
+      font-size: 18px;
+      margin: 15px;
+    }
+    /* Specific images for each section */
+    #advising {
+      background-image: url('');
+    }
+    #orientation {
+      background-image: url('');
+    }
+    #service-center {
+      background-image: url('');
+    }
+    #specific-adviser {
+      background-image: url('');
+    }
+    #Disability-Access-Center {
+      background-image: url(''); 
+    }
+    #CARES-Office {
+      background-image: url(''); 
     }
   </style>
 </head>
@@ -59,24 +99,138 @@
       <li><a href="/academicSupport">Academic Support</a></li>
       <li><a href="/forum">Community Forum</a></li>
       <li><a href="/culturalEvent">Cultural Events</a></li>
-      <li><a href="/localService">Local Services</a></li>
-      <li><a href="/profile">User Profile</a></li>
+      <li><a href="/localServices">Local Services</a></li>
+      {{#if user}}
+        {{#if isAdmin}}
+            <li><a href="/adminPortal">Admin Portal</a></li>
+        {{/if}}
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/auth/logout">Logout</a></li>
+      {{else}}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      {{/if}}
     </ul>
   </nav>
   <div class="container">
-    <section class="section">
-      <h2>Academic Support</h2>
-      <p>Here you can find resources and support services to help you succeed academically at CSUS.</p>
-      <p>Resources may include tutoring services, academic advising, workshops, and more.</p>
-    </section>
-    <section class="section">
-      <h2>Upcoming Events</h2>
-      <ul>
-        <li><strong>March 5, 2024:</strong> Academic Advising Workshop - 10:00 AM</li>
-        <li><strong>March 10, 2024:</strong> Math Tutoring Session - 2:00 PM</li>
-        <li><strong>March 15, 2024:</strong> Writing Center Open House - All day</li>
-      </ul>
-    </section>
+    <div class="row">
+      <div class="col-md-4">
+        <section id="advising" class="section" data-toggle="collapse" data-target="#advisingCollapse" aria-expanded="false" aria-controls="advisingCollapse">Advising</section>
+        <div class="collapse" id="advisingCollapse">
+          <p>
+            General Education Advising<br>
+            Lassen Hall 1013<br>
+            (916) 278-1000<br>
+            <a href="http://www.csus.edu/acad">www.csus.edu/acad</a><br><br>
+
+            Effective intentional academic advising is essential to accomplishing the University’s instructional mission. Through collaboration and academic guidance, the Academic Advising Center fosters a developmental process of assisting undergraduate students in clarifying and achieving their personal, professional, career and educational goals. Students are encouraged, and in some circumstances, required to meet with a professional or faculty advisor at least once a semester.<br><br>
+
+            Advisors help students:<br>
+            - Understand the value of the University’s General Education program, and the relationship of this program to individual interests and career objectives;<br>
+            - Interpret and apply University policies;<br>
+            - Ensure they are taking the courses for timely progress to degree; and<br>
+            - Explore educational and career objectives compatible with their interests and abilities.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <section id="orientation" class="section" data-toggle="collapse" data-target="#orientationCollapse" aria-expanded="false" aria-controls="orientationCollapse">New Student Orientation</section>
+        <div class="collapse" id="orientationCollapse">
+          <p>
+            University Union 2230<br>
+            <a href="http://www.csus.edu/orientation">csus.edu/orientation</a><br>
+            (916) 278-7841<br><br>
+
+            Orientation is required for all new first year and transfer students. The program is designed to help students make a successful transition from their previous college or high school to Sac State. During Orientation, student orientation leaders meet with small groups of new students to discuss academic requirements, advising tools and offer helpful tips regarding campus resources and student life.  In addition, new students meet with their major department advisors and register for courses. New fall students attend Orientation during the summer, while new spring students attend Orientation in January. Program details (including the Parent/Guest program) are located on the New Student Orientation website.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <section id="service-center" class="section" data-toggle="collapse" data-target="#serviceCenterCollapse" aria-expanded="false" aria-controls="serviceCenterCollapse">Student Service Center</section>
+        <div class="collapse" id="serviceCenterCollapse">
+          <p>
+            Student Service Center<br>
+            Lassen Hall 1000<br>
+            (916) 278-1000<br>
+            <a href="http://www.csus.edu/ssc">www.csus.edu/ssc</a><br><br>
+
+            The Student Service Center (SSC) is the central hub for student services under Enrollment Management & Student Services. The Center provides multi-faceted assistance to students, alumni, faculty, and staff. The Center provides students with a wide range of information and transactions related to enrollment, registration, financial aid, financial wellness, and more! Additionally, the SSC offers many services on behalf of the university and navigates students through a myriad of other campus resources. They are the primary location for Lost & Found in Lassen Hall.<br><br>
+
+            Their mission is to provide a welcoming and accessible environment that is dedicated to educating, supporting, and developing student success by providing accurate, efficient, and holistic information to the Sacramento State campus community.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <section id="specific-adviser" class="section" data-toggle="collapse" data-target="#specificAdviserCollapse" aria-expanded="false" aria-controls="specificAdviserCollapse">Specific Adviser</section>
+        <div class="collapse" id="specificAdviserCollapse">
+          <p>
+            Student-Athlete Resource Center<br>
+            Lassen Hall 3002<br>
+            <a href="http://www.csus.edu/sarc">www.csus.edu/sarc</a><br>
+            (916) 278-5431; (916) 278-7796<br><br>
+
+            The Student-Athlete Resource Center (SARC) is designed to enhance the academic and overall life development experience for NCAA Division I student athletes at Sacramento State. The SARC assists student-athletes in pursuing and successfully completing a college degree while also preparing them for challenges and experiences after college. The Center provides Sacramento State student-athletes with a very comprehensive academic support system.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <section id="Disability-Access-Center" class="section" data-toggle="collapse" data-target="#DisabilityAccessCenterCollapse" aria-expanded="false" aria-controls="DisabilityAccessCenterCollapse">Disability Access Center (DAC)</section>
+        <div class="collapse" id="DisabilityAccessCenterCollapse">
+          <p>
+            Disability Access Center (DAC)<br>
+            Lassen Hall 1008<br>
+            (916) 278-6955 (voice) or (916) 278-7239 (TDD only), (916) 278-7825 (fax)<br>
+            <a href="https://www.csus.edu/student-affairs/centers-programs/disability-access-center/">www.csus.edu/student-affairs/centers-programs/disability-access-center/</a><br>
+            <a href="mailto:dac@csus.edu">dac@csus.edu</a><br><br>
+
+            DAC services are located in three different buildings. The Access Coordinators and ASL/CART services are housed in 1008 Lassen. The Assistive Technology Lab as well as the Disability Cultural Center (DCC), with Sensory Room are located in 2011 AIRS, and the Academic Testing Center (TC) is housed in the lower level of the Library. Regular hours for all three areas are 8am-5pm M-F while classes are in session. During the summer hours, the hours for all three areas are 7:30am- 4pm.<br><br>
+
+            To be eligible for DAC disability-related academic accommodation services, applicants must submit a completed DAC application along with current medical documentation verifying disability and functional limitations. Accommodations are not in effect until approved. Sac State students must submit approved accommodation letters to faculty EACH semester accommodations will be required. Accommodations are not retroactive, so students are encouraged to get their letters to faculty as early as possible each semester.<br><br>
+
+            DAC serves all matriculated Sacramento State students including international. All DAC students are served under the CSU Policy for the Provision of Accommodations and Support Services to Students with Disabilities.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <section id="CARES-Office" class="section" data-toggle="collapse" data-target="#CARESOfficeCollapse" aria-expanded="false" aria-controls="CARESOfficeCollapse">CARES Office</section>
+        <div class="collapse" id="CARESOfficeCollapse">
+          <p>
+            Crises Assistance and Resources Education Support (CARES) Office<br>
+            University Union Suite1260<br>
+            Business Hours: Monday-Friday 9am-4pm<br>
+            (916) 278-5138<br>
+            <a href="mailto:cares@csus.edu">cares@csus.edu</a><br>
+            <a href="https://www.csus.edu/student-affairs/crisis-assistance-resource-education-support/">https://www.csus.edu/student-affairs/crisis-assistance-resource-education-support/</a><br><br>
+
+            The Sacramento State CARES  Office provides assistance to students who are in crisis or experiencing unique challenges to their education.<br><br>
+
+            CARES Case Managers can coordinate referrals to campus and community resources, and offer follow-up support to address a variety of issues including, but not limited to:<br>
+            - Housing displacement<br>
+            - Transportation barriers<br>
+            - Financial Emergencies<br>
+            - Food insecurity<br>
+            - Mental health and wellness<br>
+            - Physical health and wellness<br>
+            - Transition back to campus following a hospitalization<br><br>
+
+            Additional Services and Support:<br>
+            - Assistance with CalFresh applications<br>
+            - Student Emergency Housing on campus<br>
+            - Student Emergency Fund<br>
+            - Low-Income Student Housing (Rapid Rehousing)<br>
+            - Advocacy (for accessing resources)<br>
+            - Faculty and staff workshops on working with students in distress.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

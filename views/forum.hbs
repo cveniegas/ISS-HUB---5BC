@@ -78,10 +78,16 @@
           <li><a href="/academicSupport">Academic Support</a></li>
           <li><a href="/forum">Community Forum</a></li>
           <li><a href="/culturalEvent">Cultural Events</a></li>
-          <li><a href="/localService">Local Services</a></li>
+          <li><a href="/localServices">Local Services</a></li>
           {{#if user}}
+            {{#if isAdmin}}
+                <li><a href="/adminPortal">Admin Portal</a></li>
+            {{/if}}
             <li><a href="/profile">Profile</a></li>
             <li><a href="/auth/logout">Logout</a></li>
+          {{else}}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
           {{/if}}
         </ul>
       </nav>
@@ -114,6 +120,7 @@
               {{/each}}
               {{/if}}
         </div>
+        <div id="google_translate_element"></div>
     </div>
     
     <div class="container mt-4">
@@ -147,9 +154,10 @@
       {{#if message}}
           <h4 class="alert alert-danger mt-4">{{message}}</h4>
       {{/if}}
+      <div id="google_translate_element"></div>
     </div>
 
-    <div id="google_translate_element"></div>
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

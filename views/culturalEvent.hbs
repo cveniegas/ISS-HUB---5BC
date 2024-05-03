@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISS Hub - Cultural Events</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>ISS Hub</h1>
+    <p>A centralized digital ecosystem for international students at CSUS</p>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/academicSupport">Academic Support</a></li>
+      <li><a href="/forum">Community Forum</a></li>
+      <li><a href="/culturalEvent">Cultural Events</a></li>
+      <li><a href="/localServices">Local Services</a></li>
+      {{#if user}}
+        {{#if isAdmin}}
+            <li><a href="/adminPortal">Admin Portal</a></li>
+        {{/if}}
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/auth/logout">Logout</a></li>
+      {{else}}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      {{/if}}
+    </ul>
+  </nav>
+  <div class="container">
+    <section class="section">
+      <h2>Cultural Events Websites</h2>
+      <ul class="website-list">
+        <li><a href="https://www.sacramento365.com/categories/cultural/">Sacramento 365</a></li>
+        <li><a href="https://sacramento.downtowngrid.com/annual-events/culture-2/">Downtown Sacramento</a></li>
+        <li><a href="https://www.visitsacramento.com/events/">Visit Sacramento</a></li>
+      </ul>
+    </section>
+    <div style="display: flex; justify-content: space-around; align-items: center;">
+      <img src="/AllRoads.jpg" class="avatar" alt="user profile picture" style="width: 400px; height: 400px;"/>
+      <img src="/MultiInternational Heart.png" class="avatar" alt="user profile picture" style="width: 400px; height: 400px;"/>
+      <img src="/SacStatePlane.jpg" class="avatar" alt="user profile picture" style="width: 400px; height: 400px;"/>
+    </div>
+  </div>
+  
+</body>
+
+</html>
